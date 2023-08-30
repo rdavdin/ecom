@@ -37,7 +37,13 @@ public class UserController {
 		User user = userRepository.findByUsername(username);
 		return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
 	}
-	
+
+	//for testing url
+	@GetMapping("create")
+	public String sayHello(){
+		return "Hello from  get: /api/user/create";
+	}
+
 	@PostMapping("/create")
 	public ResponseEntity<User> createUser(@RequestBody CreateUserRequest createUserRequest) {
 		log.info("Class: UserController method: createUser - Request: username= {}", createUserRequest.getUsername());
